@@ -50,8 +50,6 @@ RokKonania – Fotka (1:N) → Každý ročník má vlastnú galériu fotiek.
 - Admin: administrátorské rozhranie do ktorého sa musite prihlásiť pre správu registrácií, fotiek, stanovíšť a informácií o podujatí.
 
 ## Rozdelenie funkcionality
-Rozdeľte plánované funkcie na základné a rozširujúce. Základné funkcie predstavujú minimum potrebné na úspešné dokončenie projektu, zatiaľ čo rozširujúce funkcie môžu byť implementované navyše podľa Vašich časových možností.
-
 Základné funkcie:
 - Registrácia účastníkov na beh.
 - Možnosť pridávať a upravovať informácie o podujatí, galériu fotiek, mapu trate a sponzorov (pre administrátora).
