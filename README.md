@@ -11,6 +11,7 @@ Cieľom práce je vytvoriť webovú stránku, ktorá zjednoduší organizáciu a
 
 ## Role v projekte
 Návštevník: Môže sa registrovať/odhlásiť na beh, prezerať informácie o akcii, galériu fotiek, mapu trate, sponzorov a reklamu.
+
 Administrátor: Má prístup k administrátorskému rozhraniu, kde môže spravovať registrácie účastníkov, pridávať a upravovať informácie o podujatí, galériu fotiek, mapu trate a sponzorov.
 
 ## Prípady použitia podľa rolí
@@ -19,6 +20,7 @@ Návštevník:
 - Prezerať galériu fotiek z predchádzajúcich ročníkov
 - Prezerať mapu trate a sponzorov
 - Registrovať sa na beh a odhlásiť sa z neho
+  
 Administrátor:
 - Spravovať registrácie účastníkov (pridať, upraviť, odstrániť)
 - Pridávať a upravovať informácie o podujatí (dátum, miesto, program, pravidlá)
