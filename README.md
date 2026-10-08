@@ -36,16 +36,18 @@ Administrátor:
 
 ## Vzťahy medzi entitami
 RokKonania – Bezec (1:N) → Každý ročník má viac bežcov.
+
 RokKonania – Stanovisko (1:N) → Každý ročník má vlastné stanovištia.
+
 RokKonania – Fotka (1:N) → Každý ročník má vlastnú galériu fotiek.
 
 ## Hlavné stránky aplikácie
-Domov – úvodná stránka s opisom akcie a jej pravidlami. Taktiež bude obsahovať reklamy a kontaktne údaje.
-Mapa – mapa trate s popisom stanovíšť.
-Registrácia – formulár pre účastníkov.
-Galéria – fotky z minulých ročníkov.
-Výsledky – zoznamy výsledkov s daných rokov.
-Admin – administrátorské rozhranie do ktorého sa musite prihlásiť pre správu registrácií, fotiek, stanovíšť a informácií o podujatí.
+- Domov: úvodná stránka s opisom akcie a jej pravidlami. Taktiež bude obsahovať reklamy a kontaktne údaje.
+- Mapa: mapa trate s popisom stanovíšť.
+- Registrácia: formulár pre účastníkov.
+- Galéria: fotky z minulých ročníkov.
+- Výsledky: zoznamy výsledkov s daných rokov.
+- Admin: administrátorské rozhranie do ktorého sa musite prihlásiť pre správu registrácií, fotiek, stanovíšť a informácií o podujatí.
 
 ## Rozdelenie funkcionality
 Rozdeľte plánované funkcie na základné a rozširujúce. Základné funkcie predstavujú minimum potrebné na úspešné dokončenie projektu, zatiaľ čo rozširujúce funkcie môžu byť implementované navyše podľa Vašich časových možností.
