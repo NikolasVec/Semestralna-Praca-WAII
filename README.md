@@ -28,11 +28,11 @@ Administrátor:
 - Spravovať mapu trate a sponzorov (pridať, upraviť, odstrániť)
 
 ## Plánované entity
--Bežec: Reprezentuje účastníka podujatia. Atribúty: ID, meno, priezvisko, dátum narodenia, pohlavie, email, ID_roka, čas.
--RokKonania: Reprezentuje rok konania podujatia. Atribúty: ID_roka, dátum konania, počet učastníkov.
--Stanovisko: Reprezentuje jednotlivé stanovištia na trati. Atribúty: ID_stanoviska, názov, popis, suradnice, ID_roka.
--Fotka: Reprezentuje fotky z podujatia. Atribúty: ID_fotky, popis, ID_roka, URL.
--Admin: Reprezentuje administrátora stránky. Atribúty: ID_admina, meno, priezvisko, email, heslo.
+- Bežec: Reprezentuje účastníka podujatia. Atribúty: ID, meno, priezvisko, dátum narodenia, pohlavie, email, ID_roka, čas.
+- RokKonania: Reprezentuje rok konania podujatia. Atribúty: ID_roka, dátum konania, počet učastníkov.
+- Stanovisko: Reprezentuje jednotlivé stanovištia na trati. Atribúty: ID_stanoviska, názov, popis, suradnice, ID_roka.
+- Fotka: Reprezentuje fotky z podujatia. Atribúty: ID_fotky, popis, ID_roka, URL.
+- Admin: Reprezentuje administrátora stránky. Atribúty: ID_admina, meno, priezvisko, email, heslo.
 
 ## Vzťahy medzi entitami
 RokKonania – Bezec (1:N) → Každý ročník má viac bežcov.
