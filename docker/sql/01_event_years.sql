@@ -1,0 +1,8 @@
+
+CREATE TABLE IF NOT EXISTS event_years (
+        id INT PRIMARY KEY,
+        year SMALLINT NOT NULL UNIQUE
+);
+
+INSERT IGNORE INTO event_years (id, year)
+VALUES (2024, 2024), (2025, 2025), (2026, 2026);
