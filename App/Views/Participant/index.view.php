@@ -7,7 +7,8 @@
 <section class="information">
     <h1>Zoznam účastníkov</h1>
 
-    <a href="<?= $link->url('participant.add') ?>">
+    <a class="participant-btn"
+       href="<?= $link->url('participant.add') ?>">
         Pridať účastníka
     </a>
 
@@ -34,8 +35,9 @@
                 <td><?= e($participant->getTime()) ?></td>
 
                 <td>
-                    <a href="<?= $link->url('participant.edit',
-                        ['id' => $participant->getId()]) ?>">
+                    <a class="participant-btn"
+                       href="<?= $link->url('participant.edit',
+                               ['id' => $participant->getId()]) ?>">
                         Upraviť
                     </a>
 
@@ -48,7 +50,9 @@
                                name="id"
                                value="<?= e($participant->getId()) ?>">
 
-                        <button type="submit">Vymazať</button>
+                        <button type="submit" class="participant-btn">
+                            Vymazať
+                        </button>
                     </form>
                 </td>
             </tr>

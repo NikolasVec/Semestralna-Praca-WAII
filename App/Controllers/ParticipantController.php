@@ -6,6 +6,7 @@ use App\Models\Participant;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
+use App\Models\EventYear;
 
 class ParticipantController extends BaseController
 {
@@ -36,8 +37,25 @@ class ParticipantController extends BaseController
         $lastName = trim((string)$request->post('last_name'));
         $email = trim((string)$request->post('email'));
         $birthDate = (string)$request->post('birth_date');
-        $year = (int)$request->post('event_year_id');
         $time = trim((string)$request->post('time'));
+        if ($request->post('registration_source') === 'public') {
+
+            // Načítame ročníky od najnovšieho
+            $years = EventYear::getAll(orderBy: 'year DESC');
+
+            if (empty($years)) {
+                throw new \Framework\Http\HttpException(400);
+            }
+
+            // Zoberieme ID ročníka s najväčším rokom
+            $year = $years[0]->getId();
+
+        } else {
+
+            // Pri správe účastníkov ponecháme výber roka
+            $year = (int)$request->post('event_year_id');
+
+        }
 
         // Základná kontrola povinných údajov
         if ($firstName === '' || $lastName === '' ||
@@ -74,10 +92,12 @@ class ParticipantController extends BaseController
         $participant->setEventYearId($year);
         $participant->setTime($time === '' ? null : $time);
 
-        // Uloženie cez ORM
         $participant->save();
 
-        // Návrat na zoznam účastníkov
+        if ($request->post('registration_source') === 'public') {
+            return $this->redirect($this->url('home.success'));
+        }
+
         return $this->redirect($this->url('participant.index'));
     }
 

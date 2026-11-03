@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
+use App\Models\EventYear;
 
 /**
  * Class HomeController
@@ -58,6 +59,11 @@ class HomeController extends BaseController
      * @return Response The response object containing the rendered HTML for the contact page.
      */
     public function contact(Request $request): Response
+    {
+        return $this->html();
+    }
+
+    public function success(Request $request): Response
     {
         return $this->html();
     }

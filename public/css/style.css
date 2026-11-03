@@ -365,3 +365,28 @@ body {
 }
 
 
+/* Tlacidla spravy ucastnikov */
+
+.participant-btn {
+    display: inline-block;
+    padding: 8px 14px;
+    background-color: #efefef;
+    color: #000;
+    border: 1px solid #767676;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.participant-btn:hover {
+    background-color: #dddddd;
+}
+
+.participant-btn:active {
+    background-color: #cccccc;
+}
+
+
