@@ -20,10 +20,18 @@ class ParticipantController extends BaseController
     }
 
 
+
     public function add(Request $request): Response
     {
-        return $this->html([], 'form');
+        $yearId = $request->get('event_year_id');
+        $returnYearId = (int)$request->get('return_year_id');
+
+        return $this->html([
+            'yearId' => $yearId,
+            'returnYearId' => $returnYearId
+        ], 'form');
     }
+
 
 
     public function save(Request $request): Response
@@ -94,10 +102,25 @@ class ParticipantController extends BaseController
 
         $participant->save();
 
+// Verejná registrácia
         if ($request->post('registration_source') === 'public') {
             return $this->redirect($this->url('home.success'));
         }
 
+// Návrat na detail ročníka
+        $returnYearId = (int)$request->post('return_year_id');
+
+        if ($returnYearId > 0 &&
+            \App\Models\EventYear::getOne($returnYearId) !== null) {
+
+            return $this->redirect(
+                $this->url('eventYear.detail', [
+                    'id' => $returnYearId
+                ])
+            );
+        }
+
+// Bežné pridanie alebo úprava účastníka
         return $this->redirect($this->url('participant.index'));
     }
 
@@ -115,9 +138,11 @@ class ParticipantController extends BaseController
             throw new \Framework\Http\HttpException(404);
         }
 
-        // Pošleme účastníka do formulára
+        $returnYearId = (int)$request->get('return_year_id');
+
         return $this->html([
-            'participant' => $participant
+            'participant' => $participant,
+            'returnYearId' => $returnYearId
         ], 'form');
     }
 
@@ -144,11 +169,23 @@ class ParticipantController extends BaseController
             throw new \Framework\Http\HttpException(404);
         }
 
-        // Odstránime účastníka z databázy
+
         $participant->delete();
 
-        // Vrátime sa na zoznam účastníkov
+        $returnYearId = (int)$request->post('return_year_id');
+
+        if ($returnYearId > 0 &&
+            \App\Models\EventYear::getOne($returnYearId) !== null) {
+
+            return $this->redirect(
+                $this->url('eventYear.detail', [
+                    'id' => $returnYearId
+                ])
+            );
+        }
+
         return $this->redirect($this->url('participant.index'));
+
     }
 
 

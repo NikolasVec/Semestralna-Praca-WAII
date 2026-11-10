@@ -10,6 +10,7 @@ class EventYear extends Model
 
     protected ?int $id = null;
     protected ?int $year = null;
+    protected ?int $pocet_ucastnikov = 0;
 
     public function getId(): ?int
     {
@@ -19,6 +20,21 @@ class EventYear extends Model
     public function getYear(): ?int
     {
         return $this->year;
+    }
+
+    public function getPocetUcastnikov(): ?int
+    {
+        return $this->pocet_ucastnikov;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function setYear(int $year): void
+    {
+        $this->year = $year;
     }
 }
 

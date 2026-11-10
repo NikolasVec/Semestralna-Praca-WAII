@@ -4,6 +4,7 @@
 
 $participant = $participant ?? null;
 $isEdit = $participant !== null;
+$yearId = $yearId ?? '';
 ?>
 
 <section class="registration">
@@ -15,6 +16,10 @@ $isEdit = $participant !== null;
     <form class="registration-form"
           method="post"
           action="<?= $link->url('participant.save') ?>">
+
+        <input type="hidden"
+               name="return_year_id"
+               value="<?= e($returnYearId ?? 0) ?>">
 
         <?php if ($isEdit): ?>
             <input type="hidden" name="id"
@@ -45,11 +50,15 @@ $isEdit = $participant !== null;
                value="<?= e($participant?->getBirthDate() ?? '') ?>"
                required>
 
+
         <label for="event_year_id">Rok konania</label>
-        <input type="number" id="event_year_id"
-               name="event_year_id" min="2000"
-               value="<?= e($participant?->getEventYearId() ?? '') ?>"
+        <input type="number"
+               id="event_year_id"
+               name="event_year_id"
+               min="2000"
+               value="<?= e($participant?->getEventYearId() ?? $yearId) ?>"
                required>
+
 
         <label for="time">Dosiahnutý čas</label>
         <input type="time" id="time"
