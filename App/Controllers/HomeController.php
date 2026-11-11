@@ -6,6 +6,7 @@ use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
 use App\Models\EventYear;
+use App\Models\Participant;
 
 /**
  * Class HomeController
@@ -67,4 +68,50 @@ class HomeController extends BaseController
     {
         return $this->html();
     }
+
+    public function register(Request $request): Response
+    {
+        if (!$request->isPost()) {
+            throw new \Framework\Http\HttpException(405);
+        }
+
+        // Nacitanie udajov z registracneho formulara
+        $firstName = trim((string)$request->post('first_name'));
+        $lastName = trim((string)$request->post('last_name'));
+        $email = trim((string)$request->post('email'));
+        $birthDate = (string)$request->post('birth_date');
+
+        // Zakladna kontrola udajov
+        if ($firstName === '' || $lastName === '' ||
+            !filter_var($email, FILTER_VALIDATE_EMAIL) ||
+            !\DateTimeImmutable::createFromFormat('!Y-m-d', $birthDate)) {
+            throw new \Framework\Http\HttpException(400);
+        }
+
+        // Ziskame najnovsi rocnik podujatia
+        $years = EventYear::getAll(orderBy: 'year DESC');
+
+        if (empty($years)) {
+            throw new \Framework\Http\HttpException(400);
+        }
+
+        $yearId = $years[0]->getId();
+
+        // Vytvorime noveho ucastnika
+        $participant = new Participant();
+
+        $participant->setFirstName($firstName);
+        $participant->setLastName($lastName);
+        $participant->setEmail($email);
+        $participant->setBirthDate($birthDate);
+        $participant->setEventYearId($yearId);
+        $participant->setTime(null);
+
+        // Ulozenie cez ORM
+        $participant->save();
+
+        // Presmerovanie na potvrdenie registracie
+        return $this->redirect($this->url('home.success'));
+    }
+
 }

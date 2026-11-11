@@ -10,6 +10,18 @@ use Framework\Http\Responses\Response;
 
 class EventYearController extends BaseController
 {
+    public function authorize(Request $request, string $action): bool
+    {
+        return $this->user->isLoggedIn()
+            && in_array($action, [
+                'index',
+                'detail',
+                'add',
+                'edit',
+                'save',
+                'delete'
+            ], true);
+    }
     public function index(Request $request): Response
     {
         // Načítame všetky ročníky z databázy

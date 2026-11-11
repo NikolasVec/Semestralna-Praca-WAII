@@ -10,9 +10,7 @@
 
     <form class="registration-form"
           method="post"
-          action="<?= $link->url('participant.save') ?>">
-
-        <input type="hidden" name="registration_source" value="public">
+          action="<?= $link->url('home.register') ?>">
 
         <label for="first-name">Meno</label>
         <input type="text" id="first-name" name="first_name" required>
